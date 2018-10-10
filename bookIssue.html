@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Book Entry Edit</title>
+    <title>Book Issue</title>
     <meta charset="utf-8" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -43,11 +43,11 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="#">Home</a></li>
-                <li><a href="./logout.php">Log Out</a></li>
+                <li><a href="#">Log Out</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="#">Home</a></li>
-                <li><a href="./logout.php">Log Out</a></li>
+                <li><a href="#">Log Out</a></li>
             </ul>
         </div>
     </nav>
@@ -70,25 +70,25 @@
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">description</i>
-                                <textarea id="bookdesc" name="bookdesc" class="materialize-textarea"></textarea>
-                                <label for="bookdesc">Book description</label>
+                                <i class="material-icons prefix">mode_edit</i>
+                                <input type="text" id="bookid" name="bookid">
+                                <label for="bookid">Book ID</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">peoples</i>
-                                <input type="text" id="author" name="author">
-                                <label for="author">Author(s)</label>
+                                <input type="text" id="customerid" name="customerid">
+                                <label for="customerid">Customer ID</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">mode_edit</i>
-                                <input type="number" id="isbn" name="isbn">
-                                <label for="isbn">ISBN Number</label>
+                                <i class="material-icons prefix">date_range</i>
+                                <input type="text" class="datepicker" id="returndate" name="returndate">
+                                <label for="returndate">Return Date</label>
                             </div>
                         </div>
 
@@ -129,6 +129,26 @@
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
+        });
+    </script>
+    <script>
+        // Get current date
+        var today = new Date();
+        var dd = today.getDate() + 1;
+        var mm = today.getMonth(); //January is 0!
+        var yyyy = today.getFullYear();
+
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            formatSubmit: 'dd-mm-yyyy',
+            hiddenName: true,
+            closeOnSelect: false, // Close upon selecting a date,
+            container: undefined, // ex. 'body' will append picker to body
+            min: new Date(yyyy, mm, dd), // Date validation
         });
     </script>
 </body>
